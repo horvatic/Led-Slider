@@ -2,19 +2,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Engineer: Shawn Horvatic
 // 
-// Create Date:    12:31:56 09/17/2016 
+// Create Date:    10/9/2016
 // Design Name: 	 Led Slider
 // Module Name:    Slider 
 // Project Name: 	 Led Slider
 // Target Devices: Mimas V2 Spartan 6 FPGA Development Board with DDR SDRAM
 //
 // Description: To have each LED light up, one after another. Once it hits LED D1 moves to the right.
-//              When It hits LED D* it moves to the left.
+//              When It hits LED D8 moves to the left.
 //
 // Dependencies: 
 //
 // Revision: 
-// Revision 0.01 - File Created
+// Revision 0.02 - File Created
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +27,6 @@ reg currentDirection;
 reg currentDirection_Next;
 reg reset; 
   
-// Scale down the clock so that output is easily visible.
 always @(posedge Clk) 
 	begin
 		moveLEDCnt <= moveLEDCnt+1'b1;
@@ -52,8 +51,7 @@ always @*
 			
 			
 	end
-
-// On every rising edge of enable check for the Push Button input.
+	
 always @(posedge enable)
    begin
 		if(reset) begin
